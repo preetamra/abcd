@@ -21,6 +21,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
+  private TempClass tempClass = new TempClass();
   private final ReactNativeHost mReactNativeHost = new ReactNativeHostWrapper(
     this,
     new ReactNativeHost(this) {
@@ -29,12 +30,14 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
+
+
     @Override
     protected List<ReactPackage> getPackages() {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
-      // packages.add(new MyReactNativePackage());
+       packages.add(new MyPackage());
       return packages;
     }
 
@@ -46,6 +49,14 @@ public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mNewArchitectureNativeHost =
       new ReactNativeHostWrapper(this, new MainApplicationReactNativeHost(this));
+
+  public String getTemp() {
+    return tempClass.getTemp();
+  }
+
+  public void setTemp(String someVariable) {
+    tempClass.setTemp(someVariable);
+  }
 
   @Override
   public ReactNativeHost getReactNativeHost() {
